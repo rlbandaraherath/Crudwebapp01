@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="webapp01._Default" %>
 
+<%@ Register Assembly="CrystalDecisions.Web, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="container">
@@ -73,13 +75,46 @@
             <div class="col-lg-2">
                 <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="btn btn-primary" />
                 <asp:Button ID="btnBack" runat="server" Text="Back" CssClass="btn btn-primary" />
+                <asp:Button ID="btncr" runat="server" Text="Open Report" CssClass="btn btn-primary" OnClick="btncr_Click" />
             </div>
         </div>
+        <br />
+        <hr />
+        <br />
+
+
+        <div class="text-center">
+
+
+
+
+            <div style="display: flex; align-items: center; justify-content: center; height: 30vh; text-align: center;">
+
+                <div style="text-align: left; display: inline-block;">
+
+                    <asp:GridView ID="GridView1" runat="server" PageSize="10" Width="800px" AutoGenerateColumns="True">
+                    </asp:GridView>
+
+                </div>
+            </div>
+        </div>
+        <div>
 
 
 
 
 
+
+          
+
+            <CR:crystalreportviewer id="CrystalReportViewer1" runat="server" autodatabind="True" displaytoolbar="true" height="300px" reportsourceid="CrystalReportSource2" toolpanelwidth="200px" width="1104px" />
+            <CR:crystalreportsource id="CrystalReportSource2" runat="server">
+                <report filename="CrystalReport2.rpt">
+                </report>
+            </CR:crystalreportsource>
+
+            <br>
+        </div>
     </div>
 
 </asp:Content>
